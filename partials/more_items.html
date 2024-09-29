@@ -1,0 +1,17 @@
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        fetch('http://localhost:3000/items?_start=5&_limit=5')
+            .then(response => response.json())
+            .then(data => {
+                const itemList = document.getElementById('item-list');
+                data.forEach(item => {
+                    const li = document.createElement('li');
+                    li.className = "p-4 bg-gray-50 rounded";
+                    li.textContent = item.name;
+                    itemList.appendChild(li);
+                });
+                const loadMoreBtn = document.getElementById('load-more');
+                loadMoreBtn.style.display = 'none';
+            });
+  });
+</script>
